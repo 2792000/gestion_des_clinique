@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+
+          <h2 class="mb-4">Ajouter une Clinique</h2>
+          
+          <form #cliniqueForm="ngForm" (ngSubmit)="addClinique()">
+            <div class="form-group">
+              <label for="libelleClinique">Nom de la Clinique:</label>
+              <input type="text" id="libelleClinique" [(ngModel)]="clinique.libelleClinique" name="libelleClinique" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="codeClinique">Code de la Clinique:</label>
+              <input type="number" id="codeClinique" [(ngModel)]="clinique.codeClinique" name="codeClinique" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Ajouter</button>
+            <button routerLink="/listc" class="btn btn-secondary">Retour à la Liste des Cliniques</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

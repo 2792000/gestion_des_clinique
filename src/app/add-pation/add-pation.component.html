@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<main id="main">
+    <section id="hero" class="d-flex align-items-top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">Add Patient</h2>
+
+                    <form #patientForm="ngForm" (ngSubmit)="addPatient()">
+                        <div class="row">
+                            <!-- Première colonne -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nomPat">Nom:</label>
+                                    <input type="text" id="nomPat" name="nomPat" [(ngModel)]="patient.nomPat"
+                                        class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cinPat">Cin:</label>
+                                    <input type="number" id="cinPat" name="cinPat" [(ngModel)]="patient.cinPat"
+                                        class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modePaiement">Mode de paiement:</label>
+                                    <select id="modePaiement" name="modePaiement" [(ngModel)]="patient.modePaiement"
+                                        class="form-control">
+                                        <option value="EnLigne">En Ligne</option>
+                                        <option value="Especes">Espèces</option>
+                                        <option value="Verment" disabled>Virement</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Deuxième colonne -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" [(ngModel)]="patient.email"
+                                        class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telPat">TEL:</label>
+                                    <input type="number" id="telPat" name="telPat" [(ngModel)]="patient.telPat"
+                                        class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dateNaissance">Date de naissance:</label>
+                                    <input type="date" id="dateNaissance" name="dateNaissance"
+                                        [(ngModel)]="patient.dateNaissance" class="form-control" required>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Add Patient</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

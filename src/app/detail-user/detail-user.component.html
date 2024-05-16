@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<main id="main" class="d-flex justify-content-center align-items-left">
+  <section id="hero">
+    <div class="container">
+      <div *ngIf="user">
+        <h2>Détails de l'utilisateur {{ user.firstname }}</h2>
+        <ul class="list-unstyled">
+          <li><strong>Nom & prenom :</strong> {{ user.lastname }} {{ user.firstname }} </li>
+          <li><strong>Email:</strong> {{ user.email }}</li>
+          <li><strong>Rôle:</strong> {{ user.role }}</li>
+        </ul>
+        <button class="btn btn-primary" (click)="updateUser(user.id)">Modifier</button>
+      </div>
+
+      <div *ngIf="!user">
+        <p>Utilisateur non trouvé.</p>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <button routerLink="/listm" class="btn btn-secondary mb-3">Retour à la liste</button>
+         
+          <h2>Détails du Médecin</h2>
+
+          <div *ngIf="medecin">
+            <p><strong>ID:</strong> {{ medecin.idMed }}</p>
+            <p><strong>Nom:</strong> {{ medecin.nomMed }}</p>
+            <p><strong>CIN:</strong> {{ medecin.cinMed }}</p>
+            <p><strong>Téléphone:</strong> {{ medecin.telMed }}</p>
+            <p><strong>Spécialité:</strong> {{ medecin.specialite }}</p>
+            <p><strong>Prix:</strong> {{ medecin.prix }}</p>
+
+            <div class="mb-3">
+                <label for="cliniqueSelect" class="form-label">Sélectionner Clinique:</label>
+                <select id="cliniqueSelect" class="form-select" [(ngModel)]="selectedCliniqueId">
+                  <option [value]="null">Sélectionner une clinique</option>
+                  <option *ngFor="let clinique of cliniques" [value]="clinique.idClinique">{{ clinique.libelleClinique }}</option>
+                </select>
+              </div>
+  
+              <button class="btn btn-warning mb-3" (click)="affecterClinique(medecin.idMed)">Affecter un Clinique</button>
+            
+          </div>
+          <div *ngIf="!medecin">
+            <p>Médecin introuvable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

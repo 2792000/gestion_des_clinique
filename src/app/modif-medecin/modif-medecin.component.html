@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Modifier Médecin</h2>
+          
+          <form (ngSubmit)="updateMedecin()" #medecinForm="ngForm">
+            <div class="form-group">
+              <label for="nomMed">Nom:</label>
+              <input type="text" class="form-control" id="nomMed" [(ngModel)]="medecin.nomMed" name="nomMed" required>
+            </div>
+            <div class="form-group">
+              <label for="cinMed">CIN:</label>
+              <input type="number" class="form-control" id="cinMed" [(ngModel)]="medecin.cinMed" name="cinMed" value="medecin.cinMed" required>
+            </div>
+            <div class="form-group">
+              <label for="telMed">TEL:</label>
+              <input type="tel" class="form-control" id="telMed" [(ngModel)]="medecin.telMed" name="telMed" required>
+            </div>
+            <div class="form-group">
+              <label for="specialite">Spécialité:</label>
+              <select class="form-control" id="specialite" [(ngModel)]="medecin.specialite" name="specialite" required>
+                <option value="CARDIOLOGIE">CARDIOLOGIE</option>
+                <option value="DERMATOLOGIE">DERMATOLOGIE</option>
+                <!-- Ajouter d'autres options ici -->
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            <button routerLink="/listm" class="btn btn-secondary">Retour à la liste des médecins</button>
+          </form>
+          
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

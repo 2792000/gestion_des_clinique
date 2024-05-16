@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Détails du patient</h2>
+
+          <div *ngIf="patient">
+            <p><strong>ID:</strong> {{ patient.idPat }}</p>
+            <p><strong>Nom:</strong> {{ patient.nomPat }}</p>
+            <p><strong>CIN:</strong> {{ patient.cinPat }}</p>
+            <p><strong>Email:</strong> {{ patient.email }}</p>
+            <p><strong>TEL:</strong> {{ patient.telPat }}</p>
+            <p><strong>Date de naissance:</strong> {{ patient.dateNaissance | date }}</p>
+          </div>
+          <button routerLink="/editpatient/{{ patient.idPat }}" class="btn btn-primary mt-4">Modifier le patient</button>
+        </div>
+      </div>
+    </div>
+      </section>
+    </main>
+    <br>
+    <br>
+<main id="main">
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="mt-4">Rendez-vous du patient</h3>
+          <ul *ngIf="rdvs && rdvs.length > 0">
+            <li *ngFor="let rdv of rdvs" class="mt-2">
+              <p><strong>Date:</strong> {{ rdv.dateRDV | date }}</p>
+              <p><strong>Heure:</strong> {{ rdv.heureRdv }}</p>
+              <p><strong>Medecin:</strong>{{rdv.nomDuMedecin}}</p>
+            </li>
+          </ul>
+          <p *ngIf="rdvs && rdvs.length === 0" class="mt-2">Aucun rendez-vous trouvé pour ce patient.</p>
+
+          <!-- Bouton vers la mise à jour du patient -->
+          
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

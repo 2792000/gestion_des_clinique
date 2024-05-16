@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <button routerLink="/addm" class="btn btn-primary mb-3">Ajouter un Medecin</button>
+  
+
+
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="specialiteSelect" class="form-label">Filtrer par Spécialité:</label>
+                <select id="specialiteSelect" class="form-select" [(ngModel)]="selectedSpecialite" (change)="filterMedecins()">
+                  <option value="ALL" selected>ALL Specialiter</option>
+                  <option value="CARDIOLOGIE">Cardiologie</option>
+                    <option value="DERMATOLOGIE">Dermatologie</option>
+                    <option value="PSYCHIATRIE">Psychiatrie</option>
+                    <option value="ORTHOPEDIE">Orthopédie</option>
+                    <option value="RADIOLOGIE">Radiologie</option>
+                </select>
+              </div>
+        
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+          <h2>Liste des Médecins</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nom</th>
+                  <th>CIN</th>
+                  <th>Téléphone</th>
+                  <th>Spécialité</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medecin of medecins">
+                  <td>{{ medecin.idMed }}</td>
+                  <td>{{ medecin.nomMed }}</td>
+                  <td>{{ medecin.cinMed }}</td>
+                  <td>{{ medecin.telMed }}</td>
+                  <td>{{ medecin.specialite }}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" (click)="goToDetail(medecin.idMed)">Détail</button> |
+                    <button class="btn btn-info btn-sm" (click)="goToUpdate(medecin.idMed)">Modifier</button> |
+                    <button class="btn btn-secondary btn-sm" (click)="goTordv(medecin.cinMed)">Rendez-vous</button> |
+                    <button class="btn btn-danger btn-sm" (click)="deleteMedecin(medecin.idMed)">Supprimer</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

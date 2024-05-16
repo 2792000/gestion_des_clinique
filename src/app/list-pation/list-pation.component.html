@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+    <button routerLink="/addp" class="btn btn-primary mb-3">Ajouter un patient</button>
+
+    <h2>Liste des patients</h2>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">CIN</th>
+          <th scope="col">Email</th>
+          <th scope="col">TEL</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.nomPat }}</td>
+          <td>{{ patient.cinPat }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.telPat }}</td>
+          <td>{{ patient.dateNaissance | date }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deletePatient(patient.idPat)">Supprimer</button>
+            <button class="btn btn-info btn-sm" (click)="viewPatientDetails(patient.idPat)">Détails</button>
+            <button class="btn btn-warning btn-sm" (click)="editPatient(patient.idPat)">Modifier</button>
+            <button class="btn btn-primary btn-sm" (click)="redirectToRendezvous(patient.idPat)">Rendez-vous</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </section>
+</main>

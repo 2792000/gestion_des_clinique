@@ -1,0 +1,36 @@
+<app-header></app-header>
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+    <h2>Modifier le patient</h2>
+    <form #patientForm="ngForm" (ngSubmit)="updatePatient()">
+          <div class="form-group">
+            <label for="nomPatient">Nom:</label>
+            <input type="text" class="form-control" id="nomPatient" name="nomPatient" [(ngModel)]="patient.nomPat" required>
+          </div>
+          <div class="form-group">
+            <label for="cinPatient">CIN:</label>
+            <input type="text" class="form-control" id="cinPatient" name="cinPatient" [(ngModel)]="patient.cinPat" required>
+          </div>
+          <div class="form-group">
+            <label for="emailPatient">Email:</label>
+            <input type="email" class="form-control" id="emailPatient" name="emailPatient" [(ngModel)]="patient.email" required>
+          </div>
+          <div class="form-group">
+            <label for="telPatient">TEL:</label>
+            <input type="tel" class="form-control" id="telPatient" name="telPatient" [(ngModel)]="patient.telPat" required>
+          </div>
+          <div class="form-group">
+            <label for="dateNaissance">Date de naissance:</label>
+            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="patient.dateNaissance" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Modifier le patient</button>
+          <button routerLink="/listep" class="btn btn-danger">Annuler</button>
+        </form>
+      </div>
+</div>
+</div>
+  </section>
+</main>

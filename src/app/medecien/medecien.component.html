@@ -1,0 +1,17 @@
+<div *ngIf="user">
+    <h2>Liste des patients pour le médecin {{ user.firstname }} {{ user.lastname }}</h2>
+    <ul>
+      <li *ngFor="let patient of patients">
+        {{ patient.nomPat }}
+        <ul>
+          <li *ngFor="let rdv of getRDVsForPatient(patient.idPat)">
+            {{ rdv.dateRDV }} - {{ rdv.heureRdv }}
+            <button (click)="marquerEtatRDV(rdv.idRDV,'ACCEPTER',medecien!.cinMed)">Accepter</button>
+            <button (click)="marquerEtatRDV(rdv.idRDV, 'ANNULER',medecien!.cinMed)">Annuler</button>
+            <button (click)="marquerEtatRDV(rdv.idRDV, 'MODIFIER',medecien!.cinMed)">Modifier</button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  

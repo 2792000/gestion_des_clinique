@@ -1,0 +1,29 @@
+.custom-red {
+  background-color: #ffcccc; /* Red background */
+  border: 2px solid #ff0000; /* Red border */
+  margin-bottom: 20px; /* Bottom margin */
+}
+
+.custom-green {
+  background-color: #ccffcc; /* Green background */
+  border: 2px solid #00ff00; /* Green border */
+  margin-bottom: 20px; /* Bottom margin */
+}
+
+.custom-blue {
+  background-color: #cceeff; /* Blue background */
+  border: 2px solid #0066ff; /* Blue border */
+  margin-bottom: 20px; /* Bottom margin */
+}
+a {
+  color: #007bff; /* Set link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  color: #0056b3; /* Change link color on hover */
+}
+.container {
+  margin: 20px; /* Add margin to all sides of the container */
+  padding: 20px; /* Add padding to all sides of the container */
+}

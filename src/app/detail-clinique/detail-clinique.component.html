@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<div class="container2">
+  <div class="container">
+    <h2>Détails de la clinique</h2>
+    <div *ngIf="clinique">
+      <p><strong>ID:</strong> {{ clinique.idClinique }}</p>
+      <p><strong>Nom:</strong> {{ clinique.libelleClinique }}</p>
+      <p><strong>Code:</strong> {{ clinique.codeClinique }}</p>
+
+    </div>
+    <div *ngIf="!clinique">
+      <p>Aucune information disponible pour cette clinique.</p>
+    </div>
+  </div>
+</div>
+

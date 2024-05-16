@@ -1,0 +1,96 @@
+<app-header></app-header>
+<main id="main">
+  
+<section id="hero" class="d-flex align-items-center">
+
+  <div class="container">
+    <h1>Welcome to DocDash</h1>
+
+    <div class="container" style="margin-top:10px;">
+      <div class="row">
+        
+        <div class="col-md-4">
+          <div class="dashboard-item custom-green">
+            <h2><i class="bi bi-person"></i> Medecin</h2>
+            <p> Nombre des Médecins : {{medecins.length}}</p>
+            <a href="/listm"><i class="bi bi-arrow-right-circle"></i> Voir tous</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="dashboard-item custom-red">
+            <h2><i class="bi bi-person-fill"></i>Patient</h2>
+            <p>Nombre des Patients : {{patients.length}}</p>
+            <a href="/listp"><i class="bi bi-arrow-right-circle"></i> Voir tous</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="dashboard-item custom-blue">
+            <h2><i class="bi bi-calendar3"></i>Rendez-vous</h2>
+            <p>Nombre des Rendez-vous : {{RDVS.length}}</p>
+            <a href="/listrdv"><i class="bi bi-arrow-right-circle"></i> Voir tous</a>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        
+        <div class="col-md-4">
+          <div class="dashboard-item custom-green">
+            <h2><i class="bi bi-person"></i> Medecin</h2>
+            <p> Rendez-vous En Attente : {{medecins.length}}</p>
+            <a href="/listm"><i class="bi bi-arrow-right-circle"></i> Voir tous</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="dashboard-item custom-red">
+            <h2><i class="bi bi-person-fill"></i>Patient</h2>
+            <p>Rendez-vous Annuler : {{patients.length}}</p>
+            <a href="/listp"><i class="bi bi-arrow-right-circle"></i> Voir tous</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="dashboard-item custom-blue">
+            <h2><i class="bi bi-calendar3"></i>Rendez-vous</h2>
+            <p>Rendez-vous Accepter : {{RDVS.length}}</p>
+            <a href="/listrdv"><i class="bi bi-arrow-right-circle"></i> Voir tous</a>
+          </div>
+        </div>
+      </div> -->
+      <h2>Calendrier</h2>
+      <!-- Calendar HTML -->
+      <table class="table table-bordered">
+        <!-- Calendar header -->
+        <caption>May 2024</caption>
+        <tr>
+          <!-- Days of the week -->
+          <th>Lundi</th>
+          <th>Mardi</th>
+          <th>Mercredi</th>
+          <th>Jeudi</th>
+          <th>Vendredi</th>
+          <th>Samedi</th>
+          <th>Dimanche</th>
+        </tr>
+        <!-- Calendar content -->
+        <tr>
+          <!-- Display appointments per day -->
+          <td *ngFor="let day of days">
+            <!-- Filter appointments by date and day -->
+            <ul class="list-unstyled" *ngIf="filteredRDVS.length > 0 && day!='Mardi'&& day!='Jeudi' && day!='Dimanche'&& day!='Lundi'&& day!='Mercredi'">
+              <li *ngFor="let rdv of filteredRDVS"> <p *ngIf="rdv.idRDV==18">patient {{ rdv.nomDuPatient }} et Medecin {{rdv.nomDuMedecin}}</p></li>
+            </ul>
+            <p *ngIf="filteredRDVS.length === 0 ||(day=='Mardi'|| day=='Jeudi' || day=='Dimanche'|| day=='Lundi'|| day=='Mercredi') ">Aucun rendez-vous</p>
+          </td>
+        </tr>
+        <!-- Add more rows for the rest of the calendar -->
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ 

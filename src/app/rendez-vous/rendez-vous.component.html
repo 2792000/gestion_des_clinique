@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="container2">
+  <div class="container">
+    <!-- rendezvous.component.html -->
+
+    <form #RDVForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nomDuPatient">Nom du Patient:</label>
+        <input type="text" name="nomDuPatient" id="nomDuPatient" [(ngModel)]="rdv.nomDuPatient" [value]="patient?.nomPat" disabled>
+        <input type="hidden" name="" id="" [(ngModel)]="rdv.idPat" [value]="patient.idPat" >
+        
+      </div>
+      <div class="form-group">
+        <label for="dateRDV">Date:</label>
+        <input type="date" class="form-control" id="dateRDV" [(ngModel)]="rdv.dateRDV" name="dateRDV">
+      </div>
+      <div class="form-group">
+        <label for="heureRdv">Heure:</label>
+        <input type="time" class="form-control" id="heureRdv" [(ngModel)]="rdv.heureRdv" name="heureRdv">
+      </div>
+      
+      <div class="form-group">
+        <label for="nomDuMedecin">Nom du Médecin:</label>
+        <select class="form-control" id="nomDuMedecin" [(ngModel)]="rdv.idMed"  name="nomDuMedecin">
+          <option *ngFor="let medecin of medecins" [value]="medecin.idMed">{{ medecin.nomMed }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="etatRDV">État du RDV:</label>
+        <select class="form-control" id="etatRDV" [(ngModel)]="rdv.etatRDV" name="etatRDV">
+          <option value="ACCEPTER">Accepter</option>
+          <option value="ANNULER">Annuler</option>
+          <option value="MODIFIER">Modifier</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="paiementRDV">Paiement du RDV:</label>
+        <select class="form-control" id="paiementRDV" [(ngModel)]="rdv.paiementRDV" name="paiementRDV">
+          <option value="Payes">Payés</option>
+          <option value="NonPayes">Non payés</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <button routerLink="/addc" class="btn btn-primary mb-3">Ajouter une Clinique</button>
+          <h2 class="mb-4">Liste des Cliniques</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Code</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let clinique of cliniques">
+                  <td>{{ clinique.libelleClinique }}</td>
+                  <td>{{ clinique.codeClinique }}</td>
+                  <td>
+                    <button class="btn btn-info btn-sm mr-2" (click)="detail(clinique.codeClinique)">Détails</button>
+                    <button class="btn btn-warning btn-sm mr-2" (click)="update(clinique)">Mise à jour</button>
+                    <button class="btn btn-danger btn-sm" (click)="delete(clinique.codeClinique)">Supprimer</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

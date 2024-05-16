@@ -1,0 +1,164 @@
+
+<body>
+    
+
+    <div class="container mt-5">
+        <header class="bg-light text-center py-3 mb-4">
+          <div class="container">
+            <h1 class="font-weight-light">Gestion des Patients</h1>
+            <nav class="nav justify-content-center">
+              <a class="nav-link" (click)="change(1)">Home</a>
+              <a class="nav-link" (click)="change(2)">Liste des RDV</a>
+              <a class="nav-link" (click)="change(3)">Liste des medecins</a>
+            </nav>
+          </div>
+        </header>
+        <div class="card mb-4" >
+            <div class="card-header">Entrer voutre N CIN </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="cin">CIN du Patient:</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="cin" name="cin" [(ngModel)]="cin" placeholder="Enter CIN">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" (click)="getpass()">Valider</button>
+                  </div>
+                </div>
+              </div>
+        
+              <div *ngIf="patient">
+                <h2>Informations du Patient</h2>
+                <p><strong>CIN:</strong> {{ patient.cinPat }}</p>
+                <p><strong>Nom:</strong> {{ patient.nomPat }}</p>
+                <p><strong>Email:</strong> {{ patient.email }}</p>
+                <p><strong>Téléphone:</strong> {{ patient.telPat }}</p>
+              </div>
+            </div>
+          </div>
+        <div class="card mb-4" *ngIf="page === 'listm'">
+
+
+
+          <div class="card-header">Liste des Médecins</div>
+
+
+          <div class="card-body">
+
+            
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="specialiteSelect" class="form-label">Filtrer par Spécialité:</label>
+                <select id="specialiteSelect" class="form-select" [(ngModel)]="selectedSpecialite" (change)="filterMedecins()">
+                  <option value="ALL" selected>ALL Specialiter</option>
+                  <option value="CARDIOLOGIE">Cardiologie</option>
+                    <option value="DERMATOLOGIE">Dermatologie</option>
+                    <option value="PSYCHIATRIE">Psychiatrie</option>
+                    <option value="ORTHOPEDIE">Orthopédie</option>
+                    <option value="RADIOLOGIE">Radiologie</option>
+                </select>
+              </div>
+        
+            </div>
+          </div>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>CIN</th>
+                  <th>Nom</th>
+                  <th>Spécialité</th>
+                  <th>Téléphone</th>
+                  <th>Ajouter un RDV</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medecin of medecins">
+                  <td>{{ medecin.cinMed }}</td>
+                  <td>{{ medecin.nomMed }}</td>
+                  <td>{{ medecin.specialite }}</td>
+                  <td>{{ medecin.telMed }}</td>
+                  <td> <button class="btn btn-primary" (click)="addrdv(patient.idPat,medecin.idMed,patient.nomPat,medecin.nomMed)">ADD RDV</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      
+       
+      
+        <div class="card mb-4" *ngIf="page === 'rdv'">
+          <div class="card-header">Liste des Rendez-vous</div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Nom du Patient</th>
+                  <th>Nom du Médecin</th>
+                  <th>Date RDV</th>
+                  <th>Heure RDV</th>
+                  <th>État RDV</th>
+                  <th>Paiement RDV</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let rdv of rdvs">
+                  <td>{{ rdv.nomDuPatient }}</td>
+                  <td>{{ rdv.nomDuMedecin }}</td>
+                  <td>{{ rdv.dateRDV | date: 'shortDate' }}</td>
+                  <td>{{ rdv.heureRdv }}</td>
+                  <td>{{ rdv.etatRDV }}</td>
+                  <td>{{ rdv.paiementRDV }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="card mb-4" *ngIf="page=='addrdv'">
+            <!-- rendezvous.component.html -->
+            <div class="card-header">Ajouter un  Rendez-vous</div>
+            <div class="card-body">
+            <form #RDVForm="ngForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="nomDuPatient">Nom Medecin:</label>
+                <input type="text" name="nomDuPatient" id="nomDuPatient" [(ngModel)]="rdv.nomDuMedecin" disabled>
+            
+                
+              </div>
+              <div class="form-group">
+                <label for="dateRDV">Date:</label>
+                <input type="date" class="form-control" id="dateRDV" [(ngModel)]="rdv.dateRDV" name="dateRDV">
+              </div>
+              <div class="form-group">
+                <label for="heureRdv">Heure:</label>
+                <input type="time" class="form-control" id="heureRdv" [(ngModel)]="rdv.heureRdv" name="heureRdv">
+              </div>
+           
+              <!-- <div class="form-group">
+                <label for="etatRDV">État du RDV:</label>
+                <select class="form-control" id="etatRDV" [(ngModel)]="rdv.etatRDV" name="etatRDV">
+              
+                  <option value="ANNULER" selected>Annuler</option>
+                  <option value="MODIFIER">Modifier</option>
+                </select>
+              </div> -->
+              <label for="etatRDV">État du RDV: En Attente</label>
+              <input type="hidden" [(ngModel)]="rdv.etatRDV" name="etatRDV" value="MODIFIER" >
+              <div class="form-group">
+                <label for="paiementRDV">Paiement:</label>
+                <select class="form-control" id="paiementRDV" [(ngModel)]="rdv.paiementRDV" name="paiementRDV">
+
+                  <option value="NonPayes" selected>Non payés</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+            </div>
+          </div>
+      </div>
+      
+</body>

@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<main id="main">
+  <section id="hero" class="d-flex align-items-top">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div *ngIf="users.length > 0">
+            <h2 class="text-center" style="color: black;"><b>Liste des Utilisateurs</b></h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Prénom</th>
+                  <th>Nom</th>
+                  <th>Email</th>
+                  <th>Rôle</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td *ngIf="user.role!='ADMIN'">{{ user.firstname }}</td>
+                  <td *ngIf="user.role!='ADMIN'">{{ user.lastname }}</td>
+                  <td *ngIf="user.role!='ADMIN'">{{ user.email }}</td>
+                  <td *ngIf="user.role!='ADMIN'">{{ user.role }}</td>
+                  <td *ngIf="user.role!='ADMIN'">
+                    <button class="btn btn-primary" (click)="viewUserDetails(user.id)">Détails</button>
+                    <button class="btn btn-danger" (click)="deleteUser(user.id)">Supprimer</button>
+                    <button class="btn btn-warning" (click)="updateUser(user.id)">Mettre à jour</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="users.length === 0">
+            <p class="alert alert-info">Aucun utilisateur trouvé.</p>
+          </div>
+          <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+  
+</main>
